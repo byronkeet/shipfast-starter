@@ -16,10 +16,10 @@ const ButtonCheckout = ({ priceId, mode = "payment" }) => {
 
     try {
       const res = await apiClient.post("/stripe/create-checkout", {
-        priceId,
-        mode,
+			priceId,
+			mode,
         successUrl: window.location.href,
-        cancelUrl: window.location.href,
+        cancelUrl: window.location.href + "/signin",
       });
 
       window.location.href = res.url;

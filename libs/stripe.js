@@ -48,6 +48,16 @@ export const createCheckout = async ({
       : [],
     success_url: successUrl,
     cancel_url: cancelUrl,
+	custom_fields: [
+      {
+        key: 'first_name',
+        label: {
+          type: 'custom',
+          custom: 'First Name',
+        },
+        type: 'text'
+      },
+    ],
     ...extraParams,
   });
 

@@ -51,6 +51,9 @@ export async function POST(req) {
         const priceId = session?.line_items?.data[0]?.price.id;
         const userId = stripeObject.client_reference_id;
         const plan = configFile.stripe.plans.find((p) => p.priceId === priceId);
+		const firstName = stripeObject.custom_fields.find(
+			field => field.key === 'first_name'
+		)?.text?.value;
 
         const customer = await stripe.customers.retrieve(customerId);
 
@@ -90,6 +93,7 @@ export async function POST(req) {
           .update({
             customer_id: customerId,
             price_id: priceId,
+			name: firstName,
             has_access: true,
           })
           .eq("id", user?.id);
