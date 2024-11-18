@@ -6,7 +6,7 @@ const config = {
 	// REQUIRED: a short description of your app for SEO tags (can be overwritten)
 	appDescription: "AI Outreach for Sales and Marketing.",
 	// REQUIRED (no https://, not trialing slash at the end, just the naked domain)
-	domainName: "localhost:3000",
+	domainName: process.env.NEXT_PUBLIC_DOMAIN_NAME,
 	crisp: {
 		// Crisp website ID. IF YOU DON'T USE CRISP: just remove this => Then add a support email in this config file (mailgun.supportEmail) otherwise customer support won't work.
 		id: "",
